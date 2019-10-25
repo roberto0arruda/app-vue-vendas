@@ -1,15 +1,18 @@
 <template>
-  <div>
-    <h2>{{ msg }}</h2>
-  </div>
+  <template-principal>
+    <p>{{ msg }}</p>
+  </template-principal>
 </template>
 
 <script>
+import TemplatePrincipal from '@/templates/TemplatePrincipal'
+
 export default {
   name: 'HomeComponent',
+  components: { TemplatePrincipal },
   data () {
     return {
-      msg: 'Sistema de Vendas',
+      msg: 'Página Home',
     }
   }
 }

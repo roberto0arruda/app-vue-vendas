@@ -1,18 +1,16 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
-import '../static/AdminLTE-2.4.3/bower_components/bootstrap/dist/css/bootstrap.css'
-import '../static/AdminLTE-2.4.3/bower_components/font-awesome/css/font-awesome.css'
-import '../static/AdminLTE-2.4.3/bower_components/Ionicons/css/ionicons.css'
-import '../static/AdminLTE-2.4.3/dist/css/AdminLTE.css'
-import '../static/AdminLTE-2.4.3/dist/css/skins/skin-blue.min.css'
-
-window.$ = window.jQuery = require('jquery');
-
 import pluginsSistema  from "@/helpers/plugins"
 
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
 Vue.use(pluginsSistema);
+Vue.use(ElementUI);
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.config.productionTip = false;
 
