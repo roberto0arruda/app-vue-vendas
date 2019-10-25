@@ -1,6 +1,6 @@
 <template>
   <template-principal>
-    <p>{{ msg }}</p>
+    <h2>{{ msg }}</h2>
   </template-principal>
 </template>
 
