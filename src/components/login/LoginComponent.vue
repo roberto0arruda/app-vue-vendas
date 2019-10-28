@@ -27,15 +27,28 @@
                 dataSubmit : { email:'', password:'' }
             }
         },
+        created () {
+            let userAux = sessionStorage.getItem('user');
+            if (userAux) {
+                this.$router.push('/');
+            }
+        },
         methods: {
             login() {
                 axios.post(`http://127.0.0.1:8000/api/login`, this.dataSubmit)
                     .then(function (response) {
-                        // eslint-disable-next-line no-console
-                        console.log(response);
+                        //Login com Sucesso
+                        if (response.data.token) {
+                            sessionStorage.setItem('user', JSON.stringify(response.data));
+                            this.$router.push('/');
+                        } else if (response.data.status === false) {
+                            //Login Incorreto
+                            this.$notify({title: 'Alerta', message: '- Usuário ou Senha Incorretos!', type: 'error', dangerouslyUseHTMLString: true});
+                        }
                     }.bind(this))
-                    .catch(function (error) {
-                        this.$notify({title: 'Alerta', message: error.response.data.errors, type: 'error', dangerouslyUseHTMLString: true});
+                    .catch(function (e) {
+                        ////Erros de Validação
+                        this.$alertaValidacao(e);
                     }.bind(this));
             }
         }

@@ -15,6 +15,14 @@
                         <router-link class="nav-link" to="/usuarios">Usuários</router-link>
                     </li>
                 </ul>
+                <ul v-if="user" class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link">{{user.name}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" @click.prevent="logout" class="nav-link">Sair</a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </div>
@@ -22,7 +30,13 @@
 
 <script>
     export default {
-        name: "NavBarComponent"
+        name: "NavBarComponent",
+        props: ['user'],
+        methods:{
+            logout () {
+                this.$emit('LOGOUT');
+            }
+        }
     }
 </script>
 
