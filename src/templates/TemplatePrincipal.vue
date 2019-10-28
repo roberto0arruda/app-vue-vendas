@@ -1,7 +1,7 @@
 <template>
     <div>
         <nav-bar-component :user="user" @LOGOUT="logout"></nav-bar-component>
-        <slot/>
+        <slot :user="user"/>
     </div>
 </template>
 

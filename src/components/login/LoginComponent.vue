@@ -9,9 +9,9 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Senha</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Informe a Senha" v-model="dataSubmit.password">
+                    <input type="password" class="form-control" id="exampleInputPassword1" @keypress.enter="login" placeholder="Informe a Senha" v-model="dataSubmit.password">
                 </div>
-                <button type="submit" class="btn btn-primary">Acessar</button>
+                <el-button type="primary" :loading="btnActive" @click="login"><i class="el-icon-success"></i> {{btnTitulo}}</el-button>
             </form>
         </div>
     </div>
@@ -22,7 +22,9 @@
         name: "LoginComponent",
         data () {
             return {
-                dataSubmit : { email:'', password:'' }
+                dataSubmit : { email:'', password:'' },
+                btnActive: false,
+                btnTitulo: 'Acessar'
             }
         },
         created () {
@@ -33,6 +35,8 @@
         },
         methods: {
             login() {
+                this.btnActive = true;
+                this.btnTitulo = 'Aguarde';
                 this.$http.post(this.$urlAPI+`login`, this.dataSubmit)
                     .then(function (response) {
                         //Login com Sucesso
@@ -47,7 +51,10 @@
                     .catch(function (e) {
                         ////Erros de Validação
                         this.$alertaValidacao(e);
-                    }.bind(this));
+                    }.bind(this)).finally(()=>{
+                        this.btnActive = false;
+                        this.btnTitulo = 'Acessar';
+                });
             }
         }
     }
