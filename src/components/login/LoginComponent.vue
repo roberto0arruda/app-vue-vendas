@@ -18,8 +18,6 @@
 </template>
 
 <script>
-    import axios from 'axios';
-
     export default {
         name: "LoginComponent",
         data () {
@@ -35,7 +33,7 @@
         },
         methods: {
             login() {
-                axios.post(`http://127.0.0.1:8000/api/login`, this.dataSubmit)
+                this.$http.post(this.$urlAPI+`login`, this.dataSubmit)
                     .then(function (response) {
                         //Login com Sucesso
                         if (response.data.token) {

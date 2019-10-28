@@ -10,11 +10,11 @@
 import TemplatePrincipal from '@/templates/TemplatePrincipal'
 
 export default {
-  name: 'HomeComponent',
+  name: 'ProdutosComponent',
   components: { TemplatePrincipal },
   data () {
     return {
-      msg: 'Página Home',
+      msg: 'Página de Produtos',
     }
   }
 }
