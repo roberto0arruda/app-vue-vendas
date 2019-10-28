@@ -10,11 +10,8 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
+
+### Login Padrão
 ```
-npm run build
-
-
-Login Padrão
 admin@admin.com.br
 123456
